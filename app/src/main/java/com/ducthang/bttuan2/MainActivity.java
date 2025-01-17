@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,17 +47,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void processArray() {
-        // Mảng số
+        Random random = new Random();
         ArrayList<Integer> numbers = new ArrayList<>();
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(4);
-        numbers.add(5);
+
+        for (int i = 0; i < 10; i++) {
+            numbers.add(random.nextInt(100) + 1);
+        }
 
         ArrayList<Integer> evenNumbers = new ArrayList<>();
         ArrayList<Integer> oddNumbers = new ArrayList<>();
 
+        // Phân loại số chẵn và số lẻ
         for (int num : numbers) {
             if (num % 2 == 0) {
                 evenNumbers.add(num);
@@ -68,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         // Log kết quả
         Log.d("EvenNumbers", evenNumbers.toString());
         Log.d("OddNumbers", oddNumbers.toString());
-
     }
+
 
     private void processString(EditText inputView) {
         String input = inputView.getText().toString();
